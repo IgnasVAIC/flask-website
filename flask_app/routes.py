@@ -46,8 +46,3 @@ def scores():
     results = models.Result.query.all()
     results.sort(key=lambda x: x.score, reverse=True)
     return render_template('scores.html', results=results)
-
-
-@app.route("/about")
-def about():
-    return render_template('about.html', title='About')

@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
 <form action="#" method="POST">
-    <input type="text" name="name" size="40" placeholder="Name - Optional">
         {% for question in questions %}
             <article class="media content-section">
               <div class="media-body">
@@ -19,6 +18,15 @@
               </div>
             </article>
         {% endfor %}
-    <input type="submit" value='Pateikti atsakymus' />
+    <article class="name submit field">
+        <div>
+            <input type="text" name="name" size="40" placeholder="Name - Optional">
+        </div>
+    </article>
+    <article class="quiz submit button">
+        <div>
+            <input type="submit" value='Submit' />
+        </div>
+    </article>
 </form>
 {% endblock content %}
