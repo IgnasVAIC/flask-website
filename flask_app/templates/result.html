@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Your test result: {{ score*100 }}%</h1>
+{% for question in questions %}
+    <h2>Question {{question.id}}</h2>
+    {% if question.correct_answer == picked_options[(question.id-1)] %}
+        <article class="media content-section", style="background-color:lightgreen">
+    {% else %}
+        <article class="media content-section", style="background-color:lightpink">
+    {% endif %}
+        <div class="media-body">
+            <div class="question-data">
+            <h>{{ question.question_text }}</h>
+                <div>Jūsų atsakymas:</div>
+                <div>{{ picked_options[(question.id-1)] }}</div>
+                <div>Teisingas atsakymas:</div>
+                <div>{{ question.correct_answer }}</div>
+             </div>
+        </div>
+    </article>
+
+{% endfor %}
+
+
+
+
+{% endblock content %}

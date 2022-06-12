@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="#" method="POST">
+    <input type="text" name="name" size="40" placeholder="Name - Optional">
+        {% for question in questions %}
+            <article class="media content-section">
+              <div class="media-body">
+                <div class="question-data">
+                  <h> Question {{ question.id }}</h>
+                      <div class="mr-2" > {{ question.question_text }}
+                          <div>
+                                  {% for answer_option in question.answers %}
+                                    <input type="radio" value="{{answer_option}}" name="{{question.id}}" required="required"> {{answer_option}} <br>
+                                  {% endfor %}
+                          </div>
+                      </div>
+                </div>
+
+              </div>
+            </article>
+        {% endfor %}
+    <input type="submit" value='Pateikti atsakymus' />
+</form>
+{% endblock content %}

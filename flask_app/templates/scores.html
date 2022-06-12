@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Scores</h1>
+
+<table>
+    <tr>
+        <th>Score</th>
+        <th>Name</th>
+        <th>Date taken</th>
+    </tr>
+    {% for single_result in results %}
+        <tr>
+            <td>{{single_result.score*100}}%</td>
+            <td>{{single_result.name}}</td>
+            <td>{{single_result.time_finished.date()}}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock content %}
