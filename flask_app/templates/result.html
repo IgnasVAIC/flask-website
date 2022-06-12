@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Your test result: {{ score*100 }}%</h1>
+    <h1>Your test result: {{ score*100 }}%</h1><br>
+    <h4>To check all of the scores <a href="/scores">click here</a></h4>
 {% for question in questions %}
     <h2>Question {{question.id}}</h2>
     {% if question.correct_answer == picked_options[(question.id-1)] %}
