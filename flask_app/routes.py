@@ -15,23 +15,22 @@ def home():
 @app.route("/quiz", methods=['GET', 'POST'])
 def quiz():
     if request.method == 'POST':
-        time_finished = datetime.utcnow()
-        picked_options = []
-        correct = 0
-        for question in questions:
-            form_name = str(question.id)
-            answer = request.form[form_name]
-            if answer == question.correct_answer:
-                correct += 1
-            picked_options.append(answer)
-        name = request.form["name"]
-        if name == "":
-            name = 'N.A.'
-        score = correct / (len(questions))
-        result1 = models.Result(time_finished = time_finished, answers = picked_options, score=score, name=name)
-        db.session.add(result1)
-        db.session.commit()
-        return render_template('result.html', score=score, questions=questions, picked_options=picked_options)
+
+            time_finished = datetime.utcnow()
+            picked_options = []
+            correct = 0
+            for question in questions:
+                form_name = str(question.id)
+                answer = request.form[form_name]
+                if answer == question.correct_answer:
+                    correct += 1
+                picked_options.append(answer)
+            name = request.form["name"]
+            score = correct / (len(questions))
+            result1 = models.Result(time_finished = time_finished, answers = picked_options, score=score, name=name)
+            db.session.add(result1)
+            db.session.commit()
+            return render_template('result.html', score=score, questions=questions, picked_options=picked_options)
     else:
         for question in questions:
             shuffle(question.answers)
